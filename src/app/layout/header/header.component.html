@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"     aria-label="menu button"
+    [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <!-- <button mat-menu-item (click)="logoutAction()">Logout</button> -->
+      <button mat-menu-item *ngIf="!adminLoginService.isUserLoggedIn()" [routerLink]="['/admin/login']">Admin Login</button>
+      <button mat-menu-item [routerLink]="['/employees/login']">Employee Login</button>
+    </mat-menu>
+    <span>Employee Management System</span>
+  </mat-toolbar>

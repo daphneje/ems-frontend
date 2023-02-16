@@ -1,0 +1,130 @@
+<mat-card>
+  <h1>Add Employee</h1>
+    <form [formGroup]="addEmployeeForm" (submit)="createEmployee()">
+        
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="First Name" formControlName="firstName">
+          <mat-error *ngIf="addEmployeeForm.controls['firstName'].errors && addEmployeeForm.controls['firstName'].hasError('required')">
+            Mandatory Field
+          </mat-error>
+          <mat-error *ngIf="addEmployeeForm.controls['firstName'].errors && addEmployeeForm.controls['firstName'].hasError('minlength')">
+            Minimum length of 2 characters
+          </mat-error>
+          <mat-error *ngIf="addEmployeeForm.controls['firstName'].errors && addEmployeeForm.controls['firstName'].hasError('maxlength')">
+            Maximum length of 50 characters
+          </mat-error>
+        </mat-form-field>
+    </p>
+        
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last Name" formControlName="lastName">
+          <mat-error *ngIf="addEmployeeForm.controls['lastName'].errors && addEmployeeForm.controls['lastName'].hasError('required')">
+            Mandatory Field
+          </mat-error>
+          <mat-error *ngIf="addEmployeeForm.controls['lastName'].errors && addEmployeeForm.controls['lastName'].hasError('minlength')">
+            Minimum length of 2 characters
+          </mat-error>
+          <mat-error *ngIf="addEmployeeForm.controls['firstName'].errors && addEmployeeForm.controls['firstName'].hasError('maxlength')">
+            Maximum length of 50 characters
+          </mat-error>
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Username" formControlName="username">
+          <mat-error *ngIf="addEmployeeForm.controls['username'].errors && addEmployeeForm.controls['username'].hasError('minlength')">
+            Minimum length of 4 characters
+          </mat-error>
+          <mat-error *ngIf="addEmployeeForm.controls['username'].errors && addEmployeeForm.controls['username'].hasError('maxlength')">
+            Maximum length of 12 characters
+          </mat-error>
+          <mat-error *ngIf="addEmployeeForm.controls['username'].errors && addEmployeeForm.controls['username'].hasError('exists')">
+            Username unavailable
+          </mat-error>
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error *ngIf="addEmployeeForm.controls['password'].errors && addEmployeeForm.controls['password'].hasError('minlength')">
+            Minimum length of 8 characters
+          </mat-error>
+          <mat-error *ngIf="addEmployeeForm.controls['password'].errors && addEmployeeForm.controls['password'].hasError('maxlength')">
+            Maximum length of 20 characters
+          </mat-error>
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="emailId">
+          <mat-error *ngIf="addEmployeeForm.controls['emailId'].errors && addEmployeeForm.controls['emailId'].hasError('email')">
+            Invalid Email
+          </mat-error>
+        </mat-form-field>
+    </p>
+    
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Mobile Number</mat-label>
+          <input matInput placeholder="Mobile Numner" formControlName="mobileNumber">
+          <mat-error *ngIf="addEmployeeForm.controls['mobileNumber'].errors && addEmployeeForm.controls['mobileNumber'].hasError('required')">
+            Mandatory Field
+          </mat-error>
+          <mat-error *ngIf="addEmployeeForm.controls['mobileNumber'].errors && addEmployeeForm.controls['mobileNumber'].hasError('minlength')">
+            Invalid Mobile Number
+          </mat-error>
+          <mat-error *ngIf="addEmployeeForm.controls['mobileNumber'].errors && addEmployeeForm.controls['mobileNumber'].hasError('maxlength')">
+            Invalid Mobile Number
+          </mat-error>
+        </mat-form-field>
+    </p>
+    
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Department</mat-label>
+        <mat-select formControlName="department">
+          <mat-option *ngFor="let department of (departments | async)" [value]="department">
+            {{department.departmentName}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="addEmployeeForm.controls['department'].errors && addEmployeeForm.controls['department'].hasError('required')">
+          Mandatory Field
+        </mat-error>
+
+      </mat-form-field>
+  </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Projects</mat-label>
+        <mat-select formControlName="projects" multiple>
+          <mat-option *ngFor="let project of (projects | async)" [value]="project">{{project.projectName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Created By</mat-label>
+        <input matInput placeholder="Created By" formControlName="createdBy">
+        <mat-error *ngIf="addEmployeeForm.controls['createdBy'].errors && addEmployeeForm.controls['createdBy'].hasError('required')">
+          Mandatory Field
+        </mat-error>
+      </mat-form-field>
+  </p>
+
+    <button mat-raised-button color="primary" [disabled]="!addEmployeeForm.valid">Add Employee</button>
+    
+    </form>
+    </mat-card>

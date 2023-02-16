@@ -1,0 +1,42 @@
+<mat-card><h1>Departments</h1></mat-card>
+
+<table mat-table [dataSource]="listDepartments" class="mat-elevation-z8">
+
+    <!-- Department ID Column -->
+    <ng-container matColumnDef="departmentId">
+      <th mat-header-cell *matHeaderCellDef> Department ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.departmentId}} </td>
+    </ng-container>
+  
+    <!-- Department Name Column -->
+    <ng-container matColumnDef="departmentName">
+      <th mat-header-cell *matHeaderCellDef> Department Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.departmentName}}</td>
+    </ng-container>
+
+    <!-- Created By Column -->
+    <ng-container matColumnDef="createdBy">
+      <th mat-header-cell *matHeaderCellDef> Created By </th>
+      <td mat-cell *matCellDef="let element"> {{element.createdBy}}</td>
+    </ng-container>
+  
+    
+    <!-- Created At Column -->
+    <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef> Created At </th>
+        <td mat-cell *matCellDef="let element"> {{element.createdAt | date:'medium'}} </td>
+    </ng-container>
+  
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <a mat-raised-button color="primary" class="link" [routerLink]="['/departments/view', element.departmentId]">View</a> 
+        <!-- | <a class="link" [routerLink]="['/departments/edit', element.departmentId]">Edit</a>  
+        | <a class="link" [routerLink]="['/departments/delete', element.departmentId]">Delete</a> -->
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

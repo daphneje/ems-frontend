@@ -1,0 +1,49 @@
+<h1>{{projectName}}</h1>
+
+<!-- {{ listEmployees[0].projects[0].projectId}} -->
+
+<!-- <div class="pojectDepartmentList" *ngFor="let projectDepartment of listProjectDepartments">
+    <ul><b>Department ID: </b>{{projectDepartment.departmentId}} </ul>
+    <ul><b>Department Name: </b>{{projectDepartment.departmentName}}</ul>
+    <br>
+</div> -->
+
+<table mat-table [dataSource]="listProjectEmployees" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="employeeId">
+      <th mat-header-cell *matHeaderCellDef> Employee ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.employeeId}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> First Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef> Username </th>
+      <td mat-cell *matCellDef="let element"> {{element.username}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="emailId">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.emailId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="mobileNumber">
+        <th mat-header-cell *matHeaderCellDef> Mobile Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.mobileNumber}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+
+
+  

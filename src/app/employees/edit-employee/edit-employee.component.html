@@ -1,0 +1,130 @@
+<mat-card class="employeetitle"><h1>Employee</h1></mat-card>
+<mat-card *ngIf="employeeDetails">
+    <form [formGroup]="editEmployeeForm" (submit)="updateEmployee()">
+        
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="First Name" formControlName="firstName">
+        <mat-error *ngIf="editEmployeeForm.controls['firstName'].errors && editEmployeeForm.controls['firstName'].hasError('required')">
+          Mandatory Field
+        </mat-error>
+        <mat-error *ngIf="editEmployeeForm.controls['firstName'].errors && editEmployeeForm.controls['firstName'].hasError('minlength')">
+          Minimum length of 2 characters
+        </mat-error>
+        <mat-error *ngIf="editEmployeeForm.controls['firstName'].errors && editEmployeeForm.controls['firstName'].hasError('maxlength')">
+          Maximum length of 50 characters
+        </mat-error>
+      </mat-form-field>
+  </p>
+  
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last Name" formControlName="lastName">
+          <mat-error *ngIf="editEmployeeForm.controls['lastName'].errors && editEmployeeForm.controls['lastName'].hasError('required')">
+            Mandatory Field
+          </mat-error>
+          <mat-error *ngIf="editEmployeeForm.controls['lastName'].errors && editEmployeeForm.controls['lastName'].hasError('minlength')">
+            Minimum length of 2 characters
+          </mat-error>
+          <mat-error *ngIf="editEmployeeForm.controls['firstName'].errors && editEmployeeForm.controls['firstName'].hasError('maxlength')">
+            Maximum length of 50 characters
+          </mat-error>
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Username" formControlName="username">
+          <mat-error *ngIf="editEmployeeForm.controls['username'].errors && editEmployeeForm.controls['username'].hasError('minlength')">
+            Minimum length of 4 characters
+          </mat-error>
+          <mat-error *ngIf="editEmployeeForm.controls['username'].errors && editEmployeeForm.controls['username'].hasError('maxlength')">
+            Maximum length of 12 characters
+          </mat-error>
+          <mat-error *ngIf="editEmployeeForm.controls['username'].errors && editEmployeeForm.controls['username'].hasError('exists')">
+            Username unavailable
+          </mat-error>
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error *ngIf="editEmployeeForm.controls['password'].errors && editEmployeeForm.controls['password'].hasError('minlength')">
+            Minimum length of 8 characters
+          </mat-error>
+          <mat-error *ngIf="editEmployeeForm.controls['password'].errors && editEmployeeForm.controls['password'].hasError('maxlength')">
+            Maximum length of 20 characters
+          </mat-error>
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="emailId">
+          <mat-error *ngIf="editEmployeeForm.controls['emailId'].errors && editEmployeeForm.controls['emailId'].hasError('email')">
+            Invalid Email
+          </mat-error>
+        </mat-form-field>
+    </p>
+    
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Mobile Number</mat-label>
+          <input matInput placeholder="Mobile Numner" formControlName="mobileNumber">
+          <mat-error *ngIf="editEmployeeForm.controls['mobileNumber'].errors && editEmployeeForm.controls['mobileNumber'].hasError('required')">
+            Mandatory Field
+          </mat-error>
+          <mat-error *ngIf="editEmployeeForm.controls['mobileNumber'].errors && editEmployeeForm.controls['mobileNumber'].hasError('minlength')">
+            Invalid Mobile Number
+          </mat-error>
+          <mat-error *ngIf="editEmployeeForm.controls['mobileNumber'].errors && editEmployeeForm.controls['mobileNumber'].hasError('maxlength')">
+            Invalid Mobile Number
+          </mat-error>
+        </mat-form-field>
+    </p>
+    
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ employeeDetails.department.departmentName }}</mat-label>
+        <mat-select formControlName="department">
+          <mat-option *ngFor="let department of (departments | async)" [value]="department">
+            {{department.departmentName}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="editEmployeeForm.controls['department'].errors && editEmployeeForm.controls['department'].hasError('required')">
+          Mandatory Field
+        </mat-error>
+
+      </mat-form-field>
+  </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ listProjectNames }}</mat-label>
+        <mat-select formControlName="projects" multiple>
+          <mat-option *ngFor="let project of (projects | async)" [value]="project">{{project.projectName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Updated By</mat-label>
+        <input matInput placeholder="Created By" formControlName="updatedBy">
+        <mat-error *ngIf="editEmployeeForm.controls['updatedBy'].errors && editEmployeeForm.controls['updatedBy'].hasError('required')">
+          Mandatory Field
+        </mat-error>
+      </mat-form-field>
+  </p>
+  
+      <button mat-raised-button color="primary" [disabled]="!editEmployeeForm.valid">Edit Employee</button>
+    </form>
+</mat-card>
+  

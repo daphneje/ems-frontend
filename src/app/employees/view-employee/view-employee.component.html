@@ -1,0 +1,57 @@
+<mat-card><h1>Employee</h1></mat-card>
+
+<div *ngIf="employeeDetails">
+    <mat-card class="p">
+      <div>
+        <b>Employee ID:</b> 
+        {{ employeeDetails.employeeId }}
+      </div>
+      <div>
+        <b>Name:</b>
+        {{ employeeDetails.firstName }} {{ employeeDetails.lastName }}
+      </div>
+      <div>
+        <b>Username:</b> 
+        {{ employeeDetails.username }}
+      </div>
+      <div>
+        <b>Password:</b>
+        {{ employeeDetails.password }}
+      </div>
+      <div>
+        <b>Email:</b>
+        {{ employeeDetails.emailId }}
+      </div>
+      <div>
+        <b>Mobile Number:</b>
+        
+        {{ employeeDetails.mobileNumber }}
+      </div>
+      <div>
+        <b>Department:</b>
+        {{ employeeDetails.department.departmentName }}
+      </div>
+      <div>
+        <b>Project ID:</b>
+        {{ listProjectNames }}
+      </div>
+      <div>
+        <b>Created By:</b>
+        {{ employeeDetails.createdBy }}
+      </div>
+      <div>
+        <b>Created At:</b>
+        {{ employeeDetails.createdAt | date:'medium' }}
+      </div>
+      <div>
+        <b>Updated By:</b>
+        {{ employeeDetails.updatedBy }}
+      </div>
+      <div>
+        <b>Updated At:</b>
+        {{ employeeDetails.updatedAt | date:'medium' }}
+      </div>
+
+    </mat-card>
+  </div>
+  

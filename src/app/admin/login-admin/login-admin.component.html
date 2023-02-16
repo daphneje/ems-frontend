@@ -1,0 +1,26 @@
+<div class="container">
+    <mat-card id="login-container">
+        <h1>Admin Login</h1>
+        <mat-card-content>
+            <form [formGroup]="adminLoginForm" (submit)="checkAdminLogin()">
+                <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput 
+                        formControlName="adminUsername">
+                    <mat-error *ngIf="adminLoginForm.get('adminUsername')?.hasError('required')">
+                        Mandatory Field
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput
+                        formControlName="adminPassword">
+                    <mat-error *ngIf="adminLoginForm.get('adminPassword')?.hasError('required')">
+                        Mandatory Field
+                    </mat-error>
+                </mat-form-field>
+                <button mat-raised-button color="primary" [disabled]="!adminLoginForm.valid">Login</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

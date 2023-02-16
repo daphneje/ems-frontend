@@ -1,0 +1,63 @@
+<mat-card><h1>{{departmentName}}</h1></mat-card>
+
+<!-- <div class="departmentEmployeeList" *ngFor="let departmentEmployee of listDepartmentEmployees">
+    <ul><b>Employee ID: </b>{{departmentEmployee.employeeId}} </ul>
+    <ul><b>Employee Name: </b>{{departmentEmployee.firstName}} {{departmentEmployee.lastName}}</ul>
+    <ul><b>Employee Username: </b>{{departmentEmployee.username}}</ul>
+    <ul><b>Employee Email: </b>{{departmentEmployee.emailId}}</ul>
+    <ul><b>Employee Mobile Number: </b>{{departmentEmployee.mobileNumber}}</ul>
+    <br>
+</div> -->
+
+<!-- <table>
+  <tr [title]="departmentName">
+      <th>Employee ID</th>
+      <th>Employee Name</th>
+      <th>Employee Username</th>
+      <th>Employee Email</th>
+      <th>Employee Mobile Number</th>
+  </tr>
+  <tr *ngFor="let departmentEmployee of listDepartmentEmployees">  
+      <td>{{departmentEmployee.employeeId}}</td>  
+      <td>{{departmentEmployee.firstName}} {{departmentEmployee.lastName}}</td>  
+      <td>{{departmentEmployee.username}}</td>  
+      <td>{{departmentEmployee.emailId}}</td>  
+      <td>{{departmentEmployee.mobileNumber}}</td>  
+  </tr>  
+</table> -->
+
+<table mat-table [dataSource]="listDepartmentEmployees" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="employeeId">
+      <th mat-header-cell *matHeaderCellDef> Employee ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.employeeId}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> First Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef> Username </th>
+      <td mat-cell *matCellDef="let element"> {{element.username}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="emailId">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.emailId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="mobileNumber">
+        <th mat-header-cell *matHeaderCellDef> Mobile Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.mobileNumber}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

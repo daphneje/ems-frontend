@@ -1,0 +1,11 @@
+form{
+    padding: 10px;
+}
+
+mat-form-field{
+    width: 300px;
+}
+
+.employeetitle{
+    padding:10px
+}

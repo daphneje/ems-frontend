@@ -1,0 +1,15 @@
+h1{
+    text-align: center;
+    margin-top: 15%;
+}
+
+.login-choice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 450px;
+}
+
+a{
+    margin: 20px;
+}

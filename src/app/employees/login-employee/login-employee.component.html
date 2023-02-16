@@ -1,0 +1,26 @@
+<div class="container">
+    <mat-card id="login-container">
+        <h1>Employee Login</h1>
+        <mat-card-content>
+            <form [formGroup]="loginForm" (submit)="loginAction()">
+                <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput 
+                        formControlName="username">
+                    <mat-error *ngIf="loginFormControl['username'].errors">
+                        Mandatory Field
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput
+                        formControlName="password">
+                    <mat-error *ngIf="loginFormControl['password'].errors">
+                        Mandatory Field
+                    </mat-error>
+                </mat-form-field>
+                <button mat-raised-button color="primary" [disabled]="!loginForm.valid">Login</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,28 @@
+<mat-card *ngIf="employeeDetails">
+    <form [formGroup]="editEmployeeForm" (submit)="updateEmployee()">
+        
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="First Name" formControlName="firstName" />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last Name" formControlName="lastName" />
+        </mat-form-field>
+      </p>
+  
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="emailId" />
+        </mat-form-field>
+      </p>
+  
+      <button mat-raised-button color="primary">Edit Emplouyee</button>
+    </form>
+</mat-card>
+  
